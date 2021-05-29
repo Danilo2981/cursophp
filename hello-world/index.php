@@ -6,21 +6,42 @@ $name = "Danilo $lastname";
 // array pemite poner todas la variables
 // los arrays empiezan en 0 = 'valor' puedo remplasar 0,1, o 2con una variable
 // y cambia el = por => para ubicar el valor en la variable
+$limitMonths = 12;
 $jobs = [
     // array 0
     [
         'title' => 'PHP Developer',
-        'description' => 'This is a cosa del putas'
+        'description' => 'This is a cosa del putas',
+        'visible' => true,
+        'months' => 6
     ],
     // array 1
     [
         'title' => 'Accountant',
-        'description' => 'This is a cosa del tapus'
+        'description' => 'This is a cosa del tapus',
+        'visible' => true,
+        'months' => 4
     ],
     // array 2
     [
         'title' => 'Devops',
-        'description' => 'This is a cosa del gavers'
+        'description' => 'This is a cosa del gavers',
+        'visible' => true,
+        'months' => 5
+    ],
+    // array 3
+    [
+      'title' => 'Node Dev',
+      'description' => 'This is a cosa del gavers',
+      'visible' => true,
+      'months' => 2
+    ],
+    // array 4
+    [
+      'title' => 'Front Dev',
+      'description' => 'This is a cosa del gavers',
+      'visible' => true,
+      'months' => 5
     ],
 ];
 
@@ -87,10 +108,24 @@ $jobs = [
           <ul>
             <!-- Condicional do while -->
             <?php
+            $totalMonths = 0;
             for($idx = 0; $idx < count($jobs); $idx++) {
+
+              // += permite sumar $totalMonths = $totalMonths +
+              $totalMonths += $jobs[$idx]['months'];
+
+              // breake termina el ciclo a diferencia de continue
+              if ($totalMonths > $limitMonths) {
+                break;
+              }
+
+              if($jobs[$idx]['visible'] != true){
+                continue;
+              }
                 echo '<li class="work-position">';
                 echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
                 echo '<p>' . $jobs[$idx]['description'] . '</p>';
+                echo '<p>' . $totalMonths . '</p>';
                 echo '<strong>Achievements:</strong>';
                 echo '<ul>';
                   echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
