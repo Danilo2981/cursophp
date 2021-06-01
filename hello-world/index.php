@@ -6,21 +6,22 @@ $name = "Danilo $lastname";
 // array pemite poner todas la variables
 // los arrays empiezan en 0 = 'valor' puedo remplasar 0,1, o 2con una variable
 // y cambia el = por => para ubicar el valor en la variable
-$limitMonths = 12;
+$limitMonths = 2000;
+
 $jobs = [
     // array 0
     [
         'title' => 'PHP Developer',
         'description' => 'This is a cosa del putas',
         'visible' => true,
-        'months' => 6
+        'months' => 16
     ],
     // array 1
     [
         'title' => 'Accountant',
         'description' => 'This is a cosa del tapus',
         'visible' => true,
-        'months' => 4
+        'months' => 14
     ],
     // array 2
     [
@@ -34,17 +35,46 @@ $jobs = [
       'title' => 'Node Dev',
       'description' => 'This is a cosa del gavers',
       'visible' => true,
-      'months' => 2
+      'months' => 24
     ],
     // array 4
     [
       'title' => 'Front Dev',
       'description' => 'This is a cosa del gavers',
       'visible' => true,
-      'months' => 5
+      'months' => 3
     ],
 ];
 
+function getDuration($months) {
+  // floor envia el resultado de la division al pison inferior
+  $years = floor($months / 12);
+  $extraMonths = $months % 12;
+
+  if ($extraMonths < 1) {
+    return "$years years";
+  }
+    return "$extraMonths months";
+}
+
+function printJob($job) {
+
+  if($job['visible'] == false){
+    return;
+  }
+
+  echo '<li class="work-position">';
+  echo '<h5>' . $job['title'] . '</h5>';
+  echo '<p>' . $job['description'] . '</p>';
+  echo '<p>' . getDuration($job['months']) . '</p>';
+  echo '<strong>Achievements:</strong>';
+  echo '<ul>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '</ul>';
+  echo '</li>';
+}
 // Ciclos condiciones que se repiten 
 // do {} while(); condiciones que se repiten
 // for(iniicalizador; condicion a cumplir; accion) {};
@@ -119,21 +149,14 @@ $jobs = [
                 break;
               }
 
-              if($jobs[$idx]['visible'] != true){
-                continue;
-              }
-                echo '<li class="work-position">';
-                echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
-                echo '<p>' . $jobs[$idx]['description'] . '</p>';
-                echo '<p>' . $totalMonths . '</p>';
-                echo '<strong>Achievements:</strong>';
-                echo '<ul>';
-                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo '</ul>';
-                echo '</li>';
-            };
+              // remplazada en la function con return en lugar de continue, return
+              // permite que la funcion termine
+              // if($jobs[$idx]['visible'] != true){
+              //   continue;
+              // }
+
+                printJob($jobs[$idx]);            
+              };
             ?>
           </ul>
         </div>

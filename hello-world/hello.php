@@ -58,6 +58,20 @@
         
         echo '<p></p>';
 
+    $a = 32 + 3;
+    $b = 3 * (2+3);
+
+    echo $a . ' y ' . $b;
+
+    echo '   ';
+
+    $valor = 10;
+    
+    if (($valor >= 5)&&($valor <= 10)) {
+        echo $valor . 'correcto';
+    }
+    
+    
 
 // Mostrar los tres mayores valores y los tres menores valores
     echo '<h2>Ejercicios Arreglos 3</h2>';    
