@@ -8,73 +8,11 @@ $name = "Danilo $lastname";
 // y cambia el = por => para ubicar el valor en la variable
 $limitMonths = 2000;
 
-$jobs = [
-    // array 0
-    [
-        'title' => 'PHP Developer',
-        'description' => 'This is a cosa del putas',
-        'visible' => true,
-        'months' => 16
-    ],
-    // array 1
-    [
-        'title' => 'Accountant',
-        'description' => 'This is a cosa del tapus',
-        'visible' => true,
-        'months' => 14
-    ],
-    // array 2
-    [
-        'title' => 'Devops',
-        'description' => 'This is a cosa del gavers',
-        'visible' => true,
-        'months' => 5
-    ],
-    // array 3
-    [
-      'title' => 'Node Dev',
-      'description' => 'This is a cosa del gavers',
-      'visible' => true,
-      'months' => 24
-    ],
-    // array 4
-    [
-      'title' => 'Front Dev',
-      'description' => 'This is a cosa del gavers',
-      'visible' => true,
-      'months' => 3
-    ],
-];
+// include si esta errado el nombre del archivo el codigo continua 
+// require si esta errado el nombre del archivo colapsa todo el codigo
+// require_once o include_once ejecutan una sola ves 
+require_once 'jobs.php';
 
-function getDuration($months) {
-  // floor envia el resultado de la division al pison inferior
-  $years = floor($months / 12);
-  $extraMonths = $months % 12;
-
-  if ($extraMonths < 1) {
-    return "$years years";
-  }
-    return "$extraMonths months";
-}
-
-function printJob($job) {
-
-  if($job['visible'] == false){
-    return;
-  }
-
-  echo '<li class="work-position">';
-  echo '<h5>' . $job['title'] . '</h5>';
-  echo '<p>' . $job['description'] . '</p>';
-  echo '<p>' . getDuration($job['months']) . '</p>';
-  echo '<strong>Achievements:</strong>';
-  echo '<ul>';
-  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-  echo '</ul>';
-  echo '</li>';
-}
 // Ciclos condiciones que se repiten 
 // do {} while(); condiciones que se repiten
 // for(iniicalizador; condicion a cumplir; accion) {};
@@ -142,7 +80,7 @@ function printJob($job) {
             for($idx = 0; $idx < count($jobs); $idx++) {
 
               // += permite sumar $totalMonths = $totalMonths +
-              $totalMonths += $jobs[$idx]['months'];
+              $totalMonths += $jobs[$idx]->months;
 
               // breake termina el ciclo a diferencia de continue
               if ($totalMonths > $limitMonths) {
@@ -155,13 +93,21 @@ function printJob($job) {
               //   continue;
               // }
 
-                printJob($jobs[$idx]);            
+                printElement($jobs[$idx]);            
               };
             ?>
           </ul>
         </div>
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
+            <ul>
+            <!-- Condicional do while -->
+            <?php
+            for($idx = 0; $idx < count($projects); $idx++) {
+                printElement($projects[$idx]);            
+              };
+            ?>
+          </ul>
             <div class="project">
                 <h5>Project X</h5>
                 <div class="row">
