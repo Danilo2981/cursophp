@@ -6,15 +6,12 @@ require 'app/Models/Project.php';
 // para crear un objeto del tipo job con esas caracteristica darle caracteristicas unicas
 // con el constructor podemos pasar lo inicializadno en la creacion del objeto
 $job1 = new Job('PHP Developer', 'This is an awesome job!!!');
-$job1->visible = true;
 $job1->months = 16;
 
 $job2 = new Job('Accountant', 'This is an del putas job!!!');
-$job2->visible = true;
 $job2->months = 24;
 
 $job3 = new Job('', 'This is an del putas job!!!');
-$job3->visible = true;
 $job3->months = 32;
 
 $project1 = new Project('Project 1', 'Description 1');

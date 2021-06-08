@@ -101,9 +101,9 @@ require_once 'jobs.php';
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
             <ul>
-            <!-- Condicional do while -->
+            <!-- hereda el comportamiento de $jobs a pesar que no tiene la id jobs a traves de la clase padre -->
             <?php
-            for($idx = 0; $idx < count($projects); $idx++) {
+              for($idx = 0; $idx < count($projects); $idx++) {
                 printElement($projects[$idx]);            
               };
             ?>

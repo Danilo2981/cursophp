@@ -2,9 +2,10 @@
 
 // Una clase es algo abstracto que define las caracteristicas de algo
 class BaseElement {
-    private $title;
+    // private solo en clase, protected en la clase parent y las hijas
+    protected $title;
     public $description;
-    public $visible;
+    public $visible = true;
     public $months;
 
     // Constructor funcion para enviar valores desde un principio pasando las variables como valores
