@@ -1,7 +1,9 @@
 <?php
 
+require_once 'Printable.php';
+
 // Una clase es algo abstracto que define las caracteristicas de algo
-class BaseElement {
+class BaseElement implements Printable {
     // private solo en clase, protected en la clase parent y las hijas
     protected $title;
     public $description;
@@ -41,7 +43,10 @@ class BaseElement {
         }
           return "$extraMonths months";
     }
-    
+
+    public function getDescription() {
+        return $this->description;
+    }
 }
 
 // Encapsular significa ocultar caracteristicas de nuestro objeto public (todos) private (nivel de acceso)

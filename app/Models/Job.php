@@ -3,6 +3,7 @@
 require_once 'BaseElement.php';
 
 // Clase heredada 
+// Clase implementada
 
 class Job extends BaseElement {
     // Constructor modifica la clase que estamos utilizando (sobrescribe el del padre)
@@ -26,7 +27,7 @@ class Job extends BaseElement {
         if ($extraMonths < 1) {
         }
           return "$extraMonths months";
-    }      
+    } 
 }
 
 // Polimorfismo metodo que va a funcionar en el contexto en que es llamado (models)

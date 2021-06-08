@@ -2,6 +2,8 @@
 
 require 'app/Models/Job.php';
 require 'app/Models/Project.php';
+require_once 'app/Models/Printable.php';
+
 
 // para crear un objeto del tipo job con esas caracteristica darle caracteristicas unicas
 // con el constructor podemos pasar lo inicializadno en la creacion del objeto
@@ -67,7 +69,8 @@ $projects = [
 
   
 //   en la vista se llama al arreglo de objetos con $job-> en lugar de $job['']
-  function printElement($job) {
+// Tipe Hinting especifica el dato que esperamos una clase o una interface, permite validar 
+  function printElement(Printable $job) {
   
     if($job->visible == false){
       return;
@@ -75,7 +78,7 @@ $projects = [
   
     echo '<li class="work-position">';
     echo '<h5>' . $job->getTitle() . '</h5>';
-    echo '<p>' . $job->description . '</p>';
+    echo '<p>' . $job->getDescription() . '</p>';
     echo '<p>' . $job->getDurationAsString() . '</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';
